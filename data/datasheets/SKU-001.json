@@ -1,0 +1,8 @@
+{
+  "sku": "SKU-001",
+  "conductor": "Cu",
+  "insulation": "PVC",
+  "voltage_kv": 1.1,
+  "cores": 4,
+  "area_sqmm": 16
+}

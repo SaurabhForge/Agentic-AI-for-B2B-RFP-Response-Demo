@@ -1,0 +1,8 @@
+{
+  "sku": "SKU-002",
+  "conductor": "Al",
+  "insulation": "XLPE",
+  "voltage_kv": 1.1,
+  "cores": 3.5,
+  "area_sqmm": 120
+}
