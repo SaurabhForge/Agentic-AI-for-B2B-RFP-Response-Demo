@@ -1,0 +1,25 @@
+{
+  "title": "Supply of LV Cables for Metro Line 5",
+  "due_date": "2025-12-15",
+  "scope_of_supply": [
+    {
+      "item": "Cu PVC Insulated Cable 1.1kV 4C x 16 sqmm",
+      "quantity": 5000
+    },
+    {
+      "item": "Al XLPE Insulated Cable 1.1kV 3.5C x 120 sqmm",
+      "quantity": 12000
+    }
+  ],
+  "tests": [
+    {
+      "name": "Insulation Resistance Test"
+    },
+    {
+      "name": "High Voltage Test"
+    },
+    {
+      "name": "Conductor Resistance Test"
+    }
+  ]
+}
