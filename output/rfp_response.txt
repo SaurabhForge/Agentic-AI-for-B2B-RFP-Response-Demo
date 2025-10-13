@@ -1,0 +1,23 @@
+Selected RFP: Supply of LV Cables for Metro Line 5
+Due Date: 2025-12-15
+
+Scope Summary:
+- Cu PVC Insulated Cable 1.1kV 4C x 16 sqmm: 5000 units
+- Al XLPE Insulated Cable 1.1kV 3.5C x 120 sqmm: 12000 units
+
+Testing Summary:
+- Insulation Resistance Test
+- High Voltage Test
+- Conductor Resistance Test
+
+Technical Recommendation Table:
+Item                                          | Qty   | Top1 SKU | Match % | Top2 SKU | Match % | Top3 SKU | Match %
+----------------------------------------------+-------+----------+---------+----------+---------+----------+--------
+Cu PVC Insulated Cable 1.1kV 4C x 16 sqmm     | 5000  | SKU-001  | 100     | SKU-003  | 60      | SKU-002  | 35     
+Al XLPE Insulated Cable 1.1kV 3.5C x 120 sqmm | 12000 | SKU-002  | 100     | SKU-003  | 54      | SKU-001  | 34     
+
+Pricing Table:
+Item                                          | Chosen SKU | Qty   | Unit Price | Tests Price | Material Total | Grand Total
+----------------------------------------------+------------+-------+------------+-------------+----------------+------------
+Cu PVC Insulated Cable 1.1kV 4C x 16 sqmm     | SKU-001    | 5000  | 100.00     | 75.00       | 500000.00      | 500075.00  
+Al XLPE Insulated Cable 1.1kV 3.5C x 120 sqmm | SKU-002    | 12000 | 95.00      | 75.00       | 1140000.00     | 1140075.00 
