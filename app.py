@@ -8,11 +8,14 @@ from rfp_agentic.main import run
 app = FastAPI(title="Agentic RFP Response API")
 
 # Serve the static files (HTML, CSS, JS)
-app.mount("/static", StaticFiles(directory="static"), name="static")
+static_path = Path(__file__).resolve().parent / "static"
+app.mount("/static", StaticFiles(directory=str(static_path)), name="static")
 
 @app.get("/", response_class=HTMLResponse)
 async def read_index():
-    with open("static/index.html", "r") as f:
+    # Use absolute path to ensure Vercel can find the file regardless of the cwd
+    html_path = Path(__file__).resolve().parent / "static" / "index.html"
+    with open(html_path, "r", encoding="utf-8") as f:
         return f.read()
 
 @app.post("/api/run")
