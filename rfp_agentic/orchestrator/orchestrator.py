@@ -9,8 +9,8 @@ from rfp_agentic.utils.formatting import format_table
 
 @dataclass
 class Orchestrator:
-    data_dir: Path = Path('/workspace/data')
-    output_dir: Path = Path('/workspace/output')
+    data_dir: Path = Path(__file__).resolve().parent.parent.parent / 'data'
+    output_dir: Path = Path(__file__).resolve().parent.parent.parent / 'output'
 
     def run(self) -> None:
         self.output_dir.mkdir(parents=True, exist_ok=True)

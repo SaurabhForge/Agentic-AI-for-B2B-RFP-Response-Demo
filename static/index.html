@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic RFP Orchestrator Dashboard</title>
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-globes">
+        <div class="globe globe-top-right"></div>
+        <div class="globe globe-bottom-left"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Header Section -->
+        <header class="dashboard-header glass-panel">
+            <div class="branding">
+                <i class="fa-solid fa-robot brand-icon"></i>
+                <div>
+                    <h1>Agentic RFP Responder</h1>
+                    <p>Automated B2B Proposal Orchestration</p>
+                </div>
+            </div>
+            
+            <button id="run-btn" class="run-button">
+                <i class="fa-solid fa-play"></i>
+                <span>Run Agentic System</span>
+            </button>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="dashboard-content">
+            
+            <!-- Agent Status/Execution View -->
+            <section class="agents-panel glass-panel">
+                <h2><i class="fa-solid fa-microchip"></i> Agent Activity Status</h2>
+                
+                <div class="agents-grid">
+                    <div class="agent-card" id="agent-sales">
+                        <div class="agent-icon-wrapper"><i class="fa-solid fa-briefcase"></i></div>
+                        <h3>Sales Agent</h3>
+                        <p>Scans pages & identifies due RFPs</p>
+                        <div class="status-indicator">Idle</div>
+                    </div>
+                    
+                    <div class="agent-card" id="agent-tech">
+                        <div class="agent-icon-wrapper"><i class="fa-solid fa-wrench"></i></div>
+                        <h3>Technical Agent</h3>
+                        <p>Parses specs & matches product catalogs</p>
+                        <div class="status-indicator">Idle</div>
+                    </div>
+                    
+                    <div class="agent-card" id="agent-price">
+                        <div class="agent-icon-wrapper"><i class="fa-solid fa-money-bill-wave"></i></div>
+                        <h3>Pricing Agent</h3>
+                        <p>Assigns product & test pricing</p>
+                        <div class="status-indicator">Idle</div>
+                    </div>
+
+                    <div class="agent-card" id="agent-orch">
+                        <div class="agent-icon-wrapper"><i class="fa-solid fa-network-wired"></i></div>
+                        <h3>Orchestrator</h3>
+                        <p>Synthesizes full response format</p>
+                        <div class="status-indicator">Idle</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final Result Output display -->
+            <section class="results-panel glass-panel">
+                <div class="results-header">
+                    <h2><i class="fa-solid fa-file-invoice"></i> Final RFP Proposal Document</h2>
+                    <button id="refresh-btn" class="icon-btn" title="Refresh Output">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </button>
+                </div>
+                
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <span class="dot d-red"></span>
+                        <span class="dot d-yellow"></span>
+                        <span class="dot d-green"></span>
+                        <span class="terminal-title">output/rfp_response.txt</span>
+                    </div>
+                    <div class="terminal-body" id="output-display">
+                        <div class="placeholder-text">Click 'Run Agentic System' to orchestrate the backend agents and generate the response.</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="/static/main.js"></script>
+</body>
+</html>
