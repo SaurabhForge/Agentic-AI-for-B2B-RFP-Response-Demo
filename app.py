@@ -7,16 +7,22 @@ from rfp_agentic.main import run
 
 app = FastAPI(title="Agentic RFP Response API")
 
-# Serve the static files (HTML, CSS, JS)
-static_path = Path(__file__).resolve().parent / "static"
-app.mount("/static", StaticFiles(directory=str(static_path)), name="static")
-
 @app.get("/", response_class=HTMLResponse)
 async def read_index():
     # Use absolute path to ensure Vercel can find the file regardless of the cwd
     html_path = Path(__file__).resolve().parent / "static" / "index.html"
     with open(html_path, "r", encoding="utf-8") as f:
         return f.read()
+
+# On Vercel, trying to mount StaticFiles globally can crash the ASGI cold start 
+# if the worker's temp path isn't fully ready. We'll handle static manually or let Vercel route it.
+@app.get("/static/{file_path:path}")
+async def serve_static(file_path: str):
+    from fastapi.responses import FileResponse
+    static_file = Path(__file__).resolve().parent / "static" / file_path
+    if static_file.exists():
+        return FileResponse(static_file)
+    return HTMLResponse(status_code=404, content="File not found")
 
 @app.post("/api/run")
 async def run_agentic_rfp():
