@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const runBtn = document.getElementById("run-btn");
     const refreshBtn = document.getElementById("refresh-btn");
     const outputDisplay = document.getElementById("output-display");
-    
+
     // Agent Cards
     const agents = [
         document.getElementById("agent-sales"),
@@ -24,14 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const simulateAgentActivity = async () => {
         for (let i = 0; i < agents.length; i++) {
             const agent = agents[i];
-            
+
             // Set Active
             agent.classList.add("active");
             agent.querySelector(".status-indicator").textContent = "WORKING...";
-            
+
             // Wait a bit (simulate time taken by agent)
             await new Promise(res => setTimeout(res, 1200 + Math.random() * 800));
-            
+
             // Set Success
             agent.classList.remove("active");
             agent.classList.add("success");
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Trigger the actual Backend execution
     const runSystem = async () => {
         if (runBtn.disabled) return;
-        
+
         // UI Preparation
         runBtn.disabled = true;
         runBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i><span>Orchestrating...</span>`;
@@ -52,15 +52,17 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             // Start UI animation loop
             const animationPromise = simulateAgentActivity();
-            
+
             // Start API Request
             const response = await fetch('/api/run', { method: 'POST' });
             const data = await response.json();
-            
+
             // Wait for both frontend animations and backend logic to finish
             await animationPromise;
-            
-            if (data.status === "success") {
+
+            if (data.status === "success" && data.content) {
+                outputDisplay.textContent = data.content;
+            } else if (data.status === "success") {
                 await fetchResults();
             } else {
                 outputDisplay.innerHTML = `<div style="color: #ef4444;">Error: ${data.message}</div>`;
@@ -81,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const res = await fetch('/api/results');
             const data = await res.json();
-            
+
             if (data.content) {
                 // Escape HTML to display text safely, and preserve whitespace
                 outputDisplay.textContent = data.content;

@@ -40,5 +40,12 @@ class Orchestrator:
             'Pricing Table:',
             price_table,
         ]
-        out.write_text('\n'.join(content))
-        print(f'Wrote consolidated response to {out}')
+        full_content = '\n'.join(content)
+        
+        try:
+            out.write_text(full_content)
+            print(f'Wrote consolidated response to {out}')
+        except OSError:
+            print(f'Read-only filesystem detected. Yielding in-memory response.')
+            
+        return full_content

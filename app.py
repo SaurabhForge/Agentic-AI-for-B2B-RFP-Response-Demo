@@ -19,8 +19,8 @@ async def read_index():
 async def run_agentic_rfp():
     """Triggers the multi-agent Orchestrator and writes to output/rfp_response.txt"""
     try:
-        run()
-        return {"status": "success", "message": "Agents completed execution"}
+        content = run()
+        return {"status": "success", "message": "Agents completed execution", "content": content}
     except Exception as e:
         return {"status": "error", "message": str(e)}
 

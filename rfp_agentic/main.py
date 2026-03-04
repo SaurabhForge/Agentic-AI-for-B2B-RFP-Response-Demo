@@ -2,9 +2,9 @@
 from rfp_agentic.orchestrator import Orchestrator
 
 
-def run():
+def run() -> str:
     orchestrator = Orchestrator()
-    orchestrator.run()
+    return orchestrator.run()
 
 
 if __name__ == '__main__':
