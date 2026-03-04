@@ -1,7 +1,12 @@
 import os
+import sys
 from pathlib import Path
+
+# Vercel's Edge runtime sometimes fails to include the root directory in the Python path
+# which causes a ModuleNotFoundError when trying to import `rfp_agentic`.
+sys.path.append(str(Path(__file__).resolve().parent))
+
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
 from rfp_agentic.main import run
 
